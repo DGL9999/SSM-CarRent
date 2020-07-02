@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.mapper.stat.StatMapper">
+
+<!-- 查询客户地区数据-->
+ <select id="loadCustomerAreaStat" resultType="com.study.pojo.stat.BaseEntity">
+    SELECT address AS `name`,count(1)AS `value`FROM bus_customer GROUP BY address;
+ </select>
+
+    <!-- 查询业务员销售额数据（月度）-->
+ <select id="loadOpernameSaleStat" resultType="com.study.pojo.stat.BaseEntity">
+    SELECT opername as `name`,SUM(price) AS value FROM bus_rent
+    WHERE DATE_FORMAT(createtime,"%Y-%m")= #{value} GROUP BY opername
+ </select>
+
+    <!-- 查询业务员销售额数据（年度）-->
+ <select id="loadOpernameYearGradeStatJson" resultType="com.study.pojo.stat.BaseEntity">
+    SELECT opername as `name`,SUM(price) AS value FROM bus_rent
+    WHERE DATE_FORMAT(createtime,"%Y")= #{value} GROUP BY opername
+ </select>
+
+        <!-- 查询公司销售额数据（年度）-->
+ <select id="loadCompanySaleStat" resultType="com.study.pojo.stat.BaseEntity">
+    SELECT DATE_FORMAT(createtime,"%m")AS NAME ,SUM(price) AS VALUE FROM bus_rent
+    WHERE DATE_FORMAT(createtime,"%Y") = #{value} GROUP BY DATE_FORMAT(createtime,"%m")
+ </select>
+</mapper>
