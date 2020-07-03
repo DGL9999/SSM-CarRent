@@ -24,8 +24,7 @@
     <link rel="icon" href="${ctx}/resources/favicon.ico">
     <link rel="stylesheet" href="${ctx}/resources/layui/css/layui.css" media="all" />
     <link rel="stylesheet" href="${ctx}/resources/css/public.css" media="all" />
-    <script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
-    <script type="text/javascript" src="${ctx}/resources/js/cache.js"></script>
+
 
 </head>
 <body class="loginBody">
@@ -56,7 +55,8 @@
     </div>
 </form>
 
-
+<script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
+<script type="text/javascript" src="${ctx}/resources/js/cache.js"></script>
 <script type="text/javascript">
     layui.use(['form','layer','jquery'],function(){
         let form = layui.form,
