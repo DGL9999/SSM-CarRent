@@ -1,15 +1,11 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Deja wu
-  Date: 2020/6/16
-  Time: 11:21
+  User: LENOVO
+  Date: 2020/7/3
+  Time: 20:23
   To change this template use File | Settings | File Templates.
 --%>
-
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!-- use EL-Expression-->
-<%@ page isELIgnored="false" %>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html class="loginHtml">
 <head>
@@ -24,8 +20,6 @@
     <link rel="icon" href="${ctx}/resources/favicon.ico">
     <link rel="stylesheet" href="${ctx}/resources/layui/css/layui.css" media="all" />
     <link rel="stylesheet" href="${ctx}/resources/css/public.css" media="all" />
-
-
 </head>
 <body class="loginBody">
 <form class="layui-form" method="post" id="loginFrm" action="${ctx}/login/login">
@@ -54,7 +48,6 @@
 <%--        <a href="javascript:;" class="seraph icon-sina layui-col-xs4 layui-col-sm4 layui-col-md4 layui-col-lg4"></a>--%>
     </div>
 </form>
-
 <script type="text/javascript" src="${ctx}/resources/layui/layui.js"></script>
 <script type="text/javascript" src="${ctx}/resources/js/cache.js"></script>
 <script type="text/javascript">
@@ -62,9 +55,6 @@
         let form = layui.form,
             layer = parent.layer === undefined ? layui.layer : top.layer
         $ = layui.jquery;
-
-
-
         //登录按钮
         form.on("submit(login)",function(data){
             $(this).text("登录中...").attr("disabled","disabled").addClass("layui-disabled");
@@ -73,7 +63,6 @@
             },1000);
             return false;
         })
-
         //表单输入效果
         $(".loginBody .input-item").click(function(e){
             e.stopPropagation();
@@ -91,7 +80,6 @@
             }
         })
     })
-
 </script>
 </body>
 </html>
