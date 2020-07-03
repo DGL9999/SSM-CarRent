@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    1.注解驱动-->
+    <mvc:annotation-driven/>
+<!--    2.静态资源过滤-->
+    <mvc:default-servlet-handler/>
+
+    <!--    3.视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+<!--    4.扫描包-->
+    <context:component-scan base-package="com.study.controller"/>
+
+<!--    5.配置springMvc对文件上传的支持-->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 设置文件名的编码 -->
+        <property name="defaultEncoding" value="utf-8"></property>
+        <!-- 配置最上传文件的支持 20M -->
+        <property name="maxUploadSize" value="20971520"></property>
+        <!-- 设置文件上传的临时目录 -->
+        <!-- 养成习惯看源码，这里被坑了挺久，它的参数是Resource类，所以需要放入一个配置文件 -->
+        <property name="uploadTempDir" value="properties/file.properties" />
+    </bean>
+
+</beans>
